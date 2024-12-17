@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Meal Planner</title>
+</head>
+<body>
+    <h1>Meal Planner</h1>
+    <ul>
+        {% for meal in meals %}
+            <li>
+                <h2>{{ meal.name }}</h2>
+                <p>{{ meal.description }}</p>
+                <img src="{{ meal.image.url }}" alt="{{ meal.name }}" style="width:200px;">
+                <a href="{{ meal.recipe_link }}">Watch Tutorial</a>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

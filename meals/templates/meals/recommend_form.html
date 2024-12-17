@@ -1,0 +1,30 @@
+{% load static %}
+{% block content %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Meal Planner.">
+    <title>Come and eat</title>
+    <link rel="stylesheet" href="{% static 'meals/style.css' %}">
+</head>
+<section class="form-section">
+  <h1>A Culinary Journey to Cameroon</h1>
+  <h2>Discover the Richness of Cameroonian Cuisine</h2>
+  <p class="note">Nestled in the heart of Africa, Cameroon, often referred to as 'Africa in miniature', offers a rich tapestry of flavors, ingredients and food traditions. With its diverse geography providing a wide array of fresh local ingredients, Cameroonian cuisine is a vibrant blend of savory, sweet, spicy and earthy notes that dance together in harmony on your palate. From the sizzling Grilled Fish of the coastal regions, the hearty Poulet DG of the Central Province to the distinctively aromatic Ndolé, each dish is an adventure in itself.  So why wait? It's time to embark on a gastronomical journey like no other!</p>
+  
+  <form action="{% url 'recommend_meals' %}" method="POST">
+    {% csrf_token %}
+    <div class="form-group">
+      <label for="weight">Meal Weight:</label>
+      <input type="number" id="weight" name="weight" step="0.1" min="0" required>
+      <p class="field-desc">Choose how luscious you'd like your meals to be! 1 for light and breezy, 5 for a divine indulgence. </p>
+    </div>
+    <div class="form-group">
+      <label for="ease">Preparation Simplicity:</label>
+      <input type="number" id="ease" name="ease" step="0.1" min="0" required>
+      <p class="field-desc">Select your cooking comfort zone! 1 for easy as pie, up to 5 for master chef challenges.</p>
+    </div>
+    <button type="submit" class="btn">Set Sail for Flavor!</button>
+  </form>
+</section>
+{% endblock %}

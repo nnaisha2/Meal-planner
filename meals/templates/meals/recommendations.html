@@ -1,0 +1,21 @@
+{% load static %}
+{% block content %}
+<head>
+    <link rel="stylesheet" href="{% static 'meals/style.css' %}">
+</head>
+<section class="recommendations-section">
+  <h2>Your Customized Meal Recommendations</h2>
+  {% for meal in recommended_meals %}
+    <div class="meal-recommendation">
+      <h3>Next Stop on Your Culinary Journey: {{ meal.name }}</h3>
+      {% if meal.image_url %}
+        <img src="{{ meal.image_url }}" alt="Delicious {{ meal.name }}" style="max-width: 300px; max-height: 300px;">
+      {% else %}
+        <p>Image coming soon. Until then, let your imagination savor the anticipation!</p>
+      {% endif %}
+      <p>A Peek into the Dish: {{ meal.description }}</p>
+      <p>Key Flavors: {{ meal.main_ingredients }}</p>
+      <a href="{{ meal.recipe_link }}">Dive into the Recipe! Watch real Cameroonians cook</a>
+    </div>
+  {% endfor %}
+{% endblock %}
